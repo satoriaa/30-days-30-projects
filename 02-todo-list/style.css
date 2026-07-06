@@ -1,0 +1,158 @@
+/* Base Style & Background */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+    color: #f8fafc;
+}
+
+/* Container Utama */
+.main-container {
+    padding: 30px;
+    border-radius: 24px;
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    width: 350px;
+}
+
+h2 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #94a3b8;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Bagian Input Group */
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background: rgba(15, 23, 42, 0.6);
+    color: white;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border 0.2s;
+}
+
+input[type="text"]:focus {
+    border-color: #38bdf8; /* Efek highlight biru saat diketik */
+}
+
+/* Tombol Tambah */
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    background-color: #38bdf8; /* Biru Cyan */
+    color: #0f172a;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    background-color: #0ea5e9;
+    transform: translateY(-1px);
+}
+
+/* Styling Tempat Daftar List (ul) */
+#daftar-tugas {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 250px; /* Batasi tinggi list biar bisa di-scroll kalau kepanjangan */
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 5px;
+}
+
+/* Style untuk setiap baris tugas */
+#daftar-tugas li {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Efek saat baris tugas disorot kursor */
+#daftar-tugas li:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(2px);
+}
+
+/* Class khusus yang akan kita pemicu lewat JS jika tugas Selesai */
+.selesai {
+    text-decoration: line-through;
+    color: #64748b; /* Ubah warna jadi abu-abu redup */
+    background: rgba(15, 23, 42, 0.3) !important; /* Buat background lebih gelap */
+    border-color: transparent !important;
+}
+
+/* Container utama untuk menumpuk notifikasi di pojok kanan atas */
+#toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 9999;
+}
+
+/* Style untuk kotak notifikasi individu */
+.toast {
+    background: #0f172a;
+    color: #4ade80; /* Warna hijau neon */
+    padding: 12px 20px;
+    border-radius: 10px;
+    border-left: 4px solid #4ade80; /* Garis aksen di sebelah kiri */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    font-size: 0.9rem;
+    font-weight: 500;
+    min-width: 200px;
+    
+    /* Animasi muncul dari kanan ke kiri */
+    animation: slideIn 0.3s ease forwards;
+    transition: all 0.3s ease;
+}
+
+/* Animasi untuk memunculkan toast */
+@keyframes slideIn {
+    from {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Efek memudar saat notifikasi dihapus */
+.toast.fade-out {
+    opacity: 0;
+    transform: translateY(-10px);
+}
